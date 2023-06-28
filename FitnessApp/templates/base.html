@@ -1,0 +1,29 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load static tailwind_tags %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- common CSS files -->
+    {% bootstrap_css %}
+    {% tailwind_css %}
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    
+</head>
+<body>
+    {% block content %}
+    <!-- content specific to child templates -->
+     <!-- common JavaScript files -->
+
+
+        {% bootstrap_javascript %}
+    {% endblock %}
+   
+</body>
+</html>

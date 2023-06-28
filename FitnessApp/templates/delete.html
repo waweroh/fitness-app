@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <b>Confirm you want to delete food item</b>
+        <input class="btn bg-danger text-white"type="submit">
+    </form>
+
+{% endblock %}
