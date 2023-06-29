@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
-from .models import Food, Consumption
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Food, Consumption, Bmi
 from django.contrib.auth.decorators import login_required
+from .forms import BmiForm, BmiMeasurementForm
+from django.urls import reverse
+
 
 # Create your views here.
 def index(request):
@@ -23,4 +26,39 @@ def delete_food(request,id):
         consumed_food.delete()
         return redirect('/')
     return render(request, 'delete.html', {'consumed_food': consumed_food})
+
+# bmi
+def measurement(request, id):
+    if request.method == "POST":
+        get_object_or_404(Bmi, pk=id).delete()
+        # BmiMeasurement.objects.get(id="id").delete()
+        return redirect(reverse("all_measurements"))
+
+def measurements(request):
+    measurements = Bmi.objects.order_by("date_measured").all()
+    return render(request, "measurements.html", {"measurements": measurements})
+
+def bmi(request):
+    if request.method == "POST":
+        form = BmiForm(request.POST)
+        if form.is_valid():
+            height = form.cleaned_data["height"]
+            weight = form.cleaned_data["weight"]
+            bmi = weight/height**2
+            return render(request, "bmi.html", {"form": form, "bmi": bmi})
+    else:
+        form = BmiForm()
+    return render(request, "bmi.html", {"form": form})
+
+def bmi_measurement(request):
+    if request.method == "POST":
+        form = BmiMeasurementForm(request.POST)
+        if form.is_valid():
+            measurement = form.save()
+            measurements = Bmi.objects.order_by("date_measured").all()
+            return render(request, "measurement_recorded.html", {"measurements": measurements})
+    else:
+        measurements = Bmi.objects.order_by("date_measured").all()
+        form = BmiMeasurementForm()
+    return render(request, "measurement.html", {"form": form, "measurements": measurements})
 
