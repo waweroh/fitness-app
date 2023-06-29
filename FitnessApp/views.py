@@ -28,15 +28,17 @@ def delete_food(request,id):
     return render(request, 'delete.html', {'consumed_food': consumed_food})
 
 # bmi
+
+def measurements(request):
+    measurements = Bmi.objects.order_by("date_measured").all()
+    return render(request, "measurements.html", {"measurements": measurements})
+
 def measurement(request, id):
     if request.method == "POST":
         get_object_or_404(Bmi, pk=id).delete()
         # BmiMeasurement.objects.get(id="id").delete()
         return redirect(reverse("all_measurements"))
 
-def measurements(request):
-    measurements = Bmi.objects.order_by("date_measured").all()
-    return render(request, "measurements.html", {"measurements": measurements})
 
 def bmi(request):
     if request.method == "POST":
