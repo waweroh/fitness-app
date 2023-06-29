@@ -27,7 +27,10 @@ def delete_food(request,id):
         return redirect('/')
     return render(request, 'delete.html', {'consumed_food': consumed_food})
 
-# bmi
+# 
+
+def greeting_view(request):
+    return render(request, "user.html")
 
 def measurements(request):
     measurements = Bmi.objects.order_by("date_measured").all()
