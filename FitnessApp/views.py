@@ -33,7 +33,7 @@ def greeting_view(request):
     return render(request, "user.html")
 
 def measurements(request):
-    measurements = Bmi.objects.order_by("date_measured").all()
+    measurements = Bmi.objects.all().order_by("date_measured")
     return render(request, "measurements.html", {"measurements": measurements})
 
 def measurement(request, id):
@@ -49,7 +49,7 @@ def bmi(request):
         if form.is_valid():
             height = form.cleaned_data["height"]
             weight = form.cleaned_data["weight"]
-            bmi = weight/height**2
+            bmi = weight/(height**2)
             return render(request, "bmi.html", {"form": form, "bmi": bmi})
     else:
         form = BmiForm()

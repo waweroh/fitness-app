@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block body %}
+{% block content %}
 
 <h3>
   Past BMI Records
@@ -19,10 +19,10 @@
   </thead>
   {% for measurement in measurements %}
   <tr>
-    <td>{{ measurement.measured_at }}</td>
-    <td>{{ measurement.height_in_meters }}</td>
+    <td>{{ measurement.date_measured }}</td>
+    <td>{{ measurement.height_in_metres }}</td>
     <td>{{ measurement.weight_in_kg }}</td>
-    <td>{{ measurement.bmi }}</td>
+    <td>{{ measurement.bmi_value }}</td>
     <td><a href="{% url 'delete_measurement' id=measurement.id %}">Details</a></td>
     <td class="text-center">
       <form action="/measurements/{{measurement.id}}/" method="post">
