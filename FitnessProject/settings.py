@@ -43,9 +43,13 @@ INSTALLED_APPS = [
     'FitnessApp',
     'tailwind',
     'bootstrap4',
-    'django_browser_reload',
+    # 'django_browser_reload',
+    'crispy_forms',
+    'bokeh',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TAILWIND_APP_NAME = 'theme'
 
@@ -64,7 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
+    # 'django_browser_reload.middleware.BrowserReloadMiddleware',
 
 ]
 
@@ -144,3 +148,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
