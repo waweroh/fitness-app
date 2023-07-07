@@ -11,10 +11,10 @@
       <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.1.1.min.css"/>
       <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.1.1.min.css"/>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--bmi style-->
-    <link rel="stylesheet" href="{% static "style.css" %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Bmi Calculator</title>
   </head>
   <body>
@@ -29,18 +29,18 @@
         <div class="collapse navbar-collapse" id="MyNav">
           <ul class="navbar-nav">
             <li class="navbar-item">
-                <a href="" class="nav-link">Home</a>
+                <a href="" class="nav-link"></a>
             </li>
             <li class="navbar-item">
-                <a href="" class="nav-link">Login</a>
+                <a href="" class="nav-link"></a>
             </li>
             <!-- {% if request.user.is_authenticated %} -->
             <li class="navbar-item">
-                <a href="" class="nav-link">Logout</a>
+                <a href="" class="nav-link"></a>
             </li>
             <!-- {% else %} -->
             <li class="navbar-item">
-                <a href="" class="nav-link">SignUp</a>
+                <a href="" class="nav-link"></a>
             </li>
             <!-- {% endif %} -->
           </ul>
@@ -61,7 +61,7 @@
       {{script|safe}}
 
     <!--custom scripts-->
-    <script type="text/javascript" src="{% static "custom.js" %}"></script>
+    <script type="text/javascript" src="{% static 'custom.js' %}"></script>
 
     </script>
     <!-- Optional JavaScript -->

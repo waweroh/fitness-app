@@ -9,10 +9,10 @@
     <!-#########################Col1###############-->
     <div class="col-md-6 col-sm-12 col-xs-12">
       <div class="tab-bmi">
-        <h3>Bmi Calculator</h3>
+        <h3>Body Mass Index (BMI) Calculator</h3>
         <div class="tab">
-          <button  class="tablinks" onclick="openUnit(event, 'metric')">Metric</button>
-          <button  class="tablinks" onclick="openUnit(event, 'imperial')">Imperial</button>
+          <button  class="tablinks px-4" onclick="openUnit(event, 'metric')"></button>
+          <button  class="tablinks px-4" onclick="openUnit(event, 'imperial')">Imperial</button>
         </div>
 
         <div class="tabcontent" id="metric">
@@ -106,14 +106,14 @@
       </div>
 
 
-    <!-#########################Col2###############-->
+    <!-Col2-->
 
 
     </div>
 
 
 
-      {% if bmi %}
+      
     <div class="col-md-6 col-sm-12 col-xs-12">
       <h2>Result</h2>
       <p>Your BMI = {{bmi}} kg/m² | {{state}}</p>
@@ -132,7 +132,7 @@
         </div>
       </div>
     </div>
-    {% endif %}
+    
   </div>
 
   {{div|safe}}

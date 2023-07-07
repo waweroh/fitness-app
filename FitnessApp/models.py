@@ -19,15 +19,7 @@ class Consumption(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     food_consumed = models. ForeignKey(Food,on_delete=models.CASCADE)
 
-# class Bmi(models.Model):
-#     height_in_metres = models.FloatField(blank=True, null=True)
-#     weight_in_kg = models.FloatField(blank=True, null=True)
-#     date_measured = models.DateField()
-#     bmi_value = models.FloatField(blank=True,null=True)
 
-#     def __str__(self):
-#         bmi_value = self.weight_in_kg / (self.height_in_metres ** 2)
-#         return f"BMI: {bmi_value:.2f}"
 class Bmi(models.Model):
     weight = models.FloatField(blank=True, null=True)
     height = models.FloatField(blank=True, null=True)

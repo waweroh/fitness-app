@@ -34,45 +34,6 @@ def delete_food(request,id):
         return redirect('/')
     return render(request, 'delete.html', {'consumed_food': consumed_food})
 
-# 
-
-# def greeting_view(request):
-#     return render(request, "user.html")
-
-# def measurements(request):
-#     measurements = Bmi.objects.all().order_by("date_measured")
-#     return render(request, "measurements.html", {"measurements": measurements})
-
-# def measurement(request, id):
-#     if request.method == "POST":
-#         get_object_or_404(Bmi, pk=id).delete()
-#         # BmiMeasurement.objects.get(id="id").delete()
-#         return redirect(reverse("all_measurements"))
-
-
-# def bmi(request):
-#     if request.method == "POST":
-#         form = BmiForm(request.POST)
-#         if form.is_valid():
-#             height = form.cleaned_data["height"]
-#             weight = form.cleaned_data["weight"]
-#             bmi = weight/(height**2)
-#             return render(request, "bmi.html", {"form": form, "bmi": bmi})
-#     else:
-#         form = BmiForm()
-#     return render(request, "bmi.html", {"form": form})
-
-# def bmi_measurement(request):
-#     if request.method == "POST":
-#         form = BmiMeasurementForm(request.POST)
-#         if form.is_valid():
-#             measurement = form.save()
-#             measurements = Bmi.objects.order_by("date_measured").all()
-#             return render(request, "measurement_recorded.html", {"measurements": measurements})
-#     else:
-#         measurements = Bmi.objects.order_by("date_measured").all()
-#         form = BmiMeasurementForm()
-#     return render(request, "measurement.html", {"form": form, "measurements": measurements})
 
 def home(request):
     context = {}
@@ -107,39 +68,11 @@ def home(request):
             state = "Obese Class II"
         elif bmi > 40:
             state = "Obese Class III"
+        # print (state)
 
         context["bmi"] = round(bmi)
         context["state"] = state
 
-    if request:
-        dates = []
-        bmis = []
-        num = 1
-        dates_queryset = Bmi.objects.all().filter()
-        for qr in dates_queryset:
-            dates.append(str(qr.date)+"("+str(num)+")")
-            bmi = qr.bmi
-            if bmi is not None:
-                bmis.append(int(bmi))
-            num += 1
 
-#         plot = figure(x_range=dates, height=600, width=600, title="Bmi Statistics",
-#                     toolbar_location="right", tools="pan, wheel_zoom, box_zoom, reset, hover, tap, crosshair")
-#         plot.title.text_font_size = "20pt"
-#         plot.xaxis.major_label_text_font_size = "14pt"
-
-#         # Add a step renderer
-#         plot.step(dates, bmis, line_width=2)
-
-#         # Customize legend
-#         legend = Legend(items=[("BMI", [plot])], location="top_right", label_text_font_size="14pt")
-#         plot.add_layout(legend, 'right')
-
-#         plot.xaxis.major_label_orientation = pi/4
-
-# # Generate components for embedding the plot
-#         script, div = components(plot)
-#         context["script"] = script
-#         context["div"] = div
 
     return render(request, "indexbmi.html", context)
